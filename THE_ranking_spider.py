@@ -10,7 +10,7 @@ def parse_ranking_page(html):
     pattern = re.compile('role="row".*?sorting_2.*?>(.*?)</td>.*?title.*?>(.*?)</a>.*?stats_number_students.*?>(.*?)</td>.*?stats_student_staff_ratio.*?>(.*?)</td>.*?stats_pc_intl_students.*?>(.*?)</td>.*?stats_female_male_ratio.*?>(.*?)</td>', re.S)
     items = re.findall(pattern, html)
     for item in items:
-        yield {'Rank': item[0],
+        yield {'RankTHE': item[0],
                'Name': item[1],
                'No. of FTE students': item[2],
                'No. of students per staff': item[3],
@@ -46,8 +46,8 @@ def main():
     scores = browser.find_element(By.CSS_SELECTOR, '#block-system-main > div > div.container > div > div.col-sm-8.content-primary > div.panel-pane.pane-the-data-rankings-datatables > div > div.toggle-cols > ul > li:nth-child(2) > label')
     scores.click()
     html_scores = browser.page_source
-    with open('THE_ranking_data.csv', 'a', encoding='utf-8', newline='') as csvfile:
-        fieldnames = ['Rank', 'Name', 'No. of FTE students', 'No. of students per staff', 'International Students',
+    with open('THE_ranking_data.csv', 'a', newline='') as csvfile:
+        fieldnames = ['RankTHE', 'Name', 'No. of FTE students', 'No. of students per staff', 'International Students',
                       'Female:Male Ratio', 'Overall', 'Teaching', 'Research Environment', 'Research Quality',
                       'Industry', 'International Outlook']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
