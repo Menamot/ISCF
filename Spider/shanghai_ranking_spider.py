@@ -84,7 +84,7 @@ def main():
     browser = webdriver.Chrome(options=chrome_options)
     browser.get(url)
 
-    with open('data/Shanghai_ranking_data_2023.csv', 'w', newline='') as csvfile:
+    with open('../data/Shanghai_ranking_data_2023.csv', 'w', newline='') as csvfile:
         fieldnames = ['Rank', 'Name', 'Region', 'Regional rank', 'Total score',
                       'Alumni', 'Award', 'Hici', 'N&S', 'PUB',
                       'PCP']
